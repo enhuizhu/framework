@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <script src="Framework.js"></script>
+  </head>
+  <body>
+
+    <div class="content"></div>
+
+    <script type="template/framework" id="header-template">
+      <header>
+        <h1>{{title}}</h1>
+        <form>
+          <label for="title">Add your title here</label>
+          <input type="text" id="title" data-event="keyup:titleChanged" value="{{title}}" />
+        </form>
+        <a href="#" data-event="click:clearTitle">clear the title</a>
+      </header>
+    </script>
+
+    <script>
+      var config = {
+        template: '#header-template',
+        data: {
+          title: 'TrialReach'
+        },
+        clearTitle: function(e) {
+          document.querySelector('input').value = '';
+          document.querySelector('h1').innerHTML = '';
+        },
+        titleChanged: function(e) {
+          // config.data.title = e.target.value;
+          document.querySelector('h1').innerHTML = e.target.value;
+        }
+      };
+      
+      var header = Framework.create(config);
+      header.render('.content');
+
+    </script>
+  </body>
+</html>
