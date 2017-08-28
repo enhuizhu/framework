@@ -112,8 +112,6 @@ var App = function () {
 
             if (JSON.stringify(this.config.data) !== this.latestData) {
                 this.render(this.selector);
-                console.log('currentActiveSelector', this.currentActiveSelector);
-                document.querySelector(this.selector + ' ' + this.currentActiveSelector).focus();
                 this.latestData = JSON.stringify(this.config.data);
             }
 
@@ -153,8 +151,8 @@ var App = function () {
                 var eventStrArr = eventStr.split(':');
                 var eventName = eventStrArr[0];
                 var funcName = eventStrArr[1];
+
                 dom.addEventListener(eventName, function (e) {
-                    _this2.currentActiveSelector = '[data-event=\'' + eventStr + '\']';
                     _this2.config[funcName](e);
                 });
             });

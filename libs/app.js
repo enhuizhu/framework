@@ -13,8 +13,6 @@ class App {
 
         if (JSON.stringify(this.config.data) !== this.latestData) {
             this.render(this.selector);
-            console.log('currentActiveSelector', this.currentActiveSelector);
-            document.querySelector(`${this.selector} ${this.currentActiveSelector}`).focus();
             this.latestData = JSON.stringify(this.config.data);
         }
 
@@ -48,10 +46,9 @@ class App {
             let eventStrArr = eventStr.split(':');
             let eventName = eventStrArr[0];
             let funcName = eventStrArr[1];
+            
             dom.addEventListener(eventName, (e) => {
-                this.currentActiveSelector = `[data-event='${eventStr}']`;
                 this.config[funcName](e);
-
             });
         });
     }
