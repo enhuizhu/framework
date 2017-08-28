@@ -4,7 +4,7 @@ const App  = require('../../libs/app');
 const expect = require('chai').expect;
 
 describe('App', () => {
-	const config = {
+    const config = {
         template: '#header-template',
         data: {
           title: 'TrialReach'
@@ -17,11 +17,11 @@ describe('App', () => {
           document.querySelector('h1').innerHTML = e.target.value;
         }
     }
-	
-	const myApp = new App(config);
+    
+    const myApp = new App(config);
 
-	it('replace vars', () => {
-		let testStr = 'fdasjlk {{title}} kfdjlal {{title}} jfdlkajlkfd';
-		expect(myApp.replaceVars(testStr)).to.equal('fdasjlk TrialReach kfdjlal TrialReach jfdlkajlkfd');
-	});
+    it('replace vars', () => {
+        let testStr = 'fdasjlk {{title}} kfdjlal {{title}} jfdlkajlkfd';
+        expect(myApp.replaceVars(testStr)).to.equal('fdasjlk TrialReach kfdjlal TrialReach jfdlkajlkfd');
+    });
 });
